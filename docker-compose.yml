@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mariadb:10.1.20
@@ -13,6 +11,11 @@ services:
       MYSQL_DATABASE: 'wordpress'
       MYSQL_USER: 'wordpress'
       MYSQL_PASSWORD: 'admin'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "--user=wordpress", "--password=admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - app-network
 
@@ -21,7 +24,7 @@ services:
     container_name: wordpress_app
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: 'wordpress'
@@ -32,7 +35,8 @@ services:
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
       - ./wp-content/uploads:/var/www/html/wp-content/uploads
     depends_on:
-      - db
+      db:
+        condition: service_healthy  # To wait for the database to be ready
     networks:
       - app-network
 
