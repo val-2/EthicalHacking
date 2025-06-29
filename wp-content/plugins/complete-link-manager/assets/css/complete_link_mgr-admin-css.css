@@ -1,0 +1,209 @@
+.clm-main h1 {
+    color: #0c0f1f;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.dt-layout-cell.dt-layout-start {
+    width: 40%;
+}
+.clm-main .dt-length {
+    color: #0c0f1f !important;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.dt-length label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #172153;
+}
+.clm-main .dt-length select {
+    width: 10%;
+    border: 1px solid #172153 !important;
+    background-color: #fff !important;
+    border-radius: 0px !important;
+}
+.clm-main .dt-search label {
+    color: #172153;
+    font-size: 14px;
+    font-weight: 500;
+}
+.clm-main .dt-search input {
+    border: 1px solid #172153 !important;
+    background-color: #fff !important;
+    border-radius: 0px !important;
+}
+.clm-main .complete-links-table {
+    border-radius: 0px;
+    border: 1px solid #d2d2d2 !important;
+}
+.clm-main .complete-links-table thead {
+    background-color: #172153 !important;
+}
+.clm-main .complete-links-table th {
+    padding: 15px 10px;
+    color: #fff !important;
+    font-weight: 600;
+    border-color: #172153 !important;
+}
+.clm-main .complete-links-table tbody tr {
+    background-color: #fff !important;
+}
+.complete-links-table tbody tr td:first-child a {
+    color: #172153 !important;
+    font-weight: 500;
+}
+.clm-main .complete-links-table tbody td {
+    border-bottom: 1px solid #d2d2d2;
+    color: #0f1941 !important;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+.complete-links-table .status-red {
+    padding: 8px 16px;
+    background: #f8cdcd;
+    border-radius: 20px;
+    color: #ff0000;
+    font-weight: 600;
+}
+.complete-links-table .status-green {
+    padding: 8px 16px;
+    background: #cdf8de;
+    border-radius: 20px;
+    color: #008000;
+    font-weight: 600;
+}
+.complete-links-table .status-orange {
+    padding: 8px 16px;
+    background: #fce7d7;
+    border-radius: 20px;
+    color: #ff5e00;
+    font-weight: 600;
+}
+.clm-main .complete-links-table th:first-child {
+    width: 30%;
+}
+.clm-main .complete-links-table th:nth-child(2) {
+    width: 20%;
+}
+.clm-main .complete-links-table th:nth-child(3) {
+    width: 12%;
+}
+.clm-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.clm-action-buttons .button {
+    padding: 10px !important;
+    background: #f56f46;
+    color: #fff;
+    border: unset;
+    border-radius: 0px;
+}
+.clm-action-buttons .button:hover {
+    background: #0c0f1f;
+    color: #fff;
+}
+.clm-action-buttons span.dashicons {
+    padding: unset;
+    margin: unset;
+    display: block;
+}
+.complete-links-table  a.upgrade-pro {
+    padding: 10px 15px !important;
+    background: #0c0f1f;
+    color: #fff;
+    border: 1px solid #0c0f1f;
+    border-radius: 0px;
+    line-height: unset;
+    font-weight: 500;
+}
+.complete-links-table  a.upgrade-pro:hover {
+    background: #fff;
+    color: #0c0f1f;
+    border: 1px solid #0c0f1f;
+}
+
+.clm-main .dt-info {
+    font-size: 14px;
+    font-weight: 500;
+}
+.clm-main .dt-paging-button {
+    font-size: 14px !important;
+    font-weight: 500;
+}
+.clm-main .dt-paging-button.current{
+    border: 1px solid #172153 !important;
+    margin-top: 10px;
+    margin-left: 5px !important;
+    border-radius: 0px !important;
+    background: #172153 !important;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+.white-popup-block {
+    width: 400px !important;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+.white-popup-block h2 {
+    margin-top: unset;
+    font-weight: 700;
+}
+.white-popup-block .input-field-section {
+    margin-bottom: 20px;
+}
+.white-popup-block .input-field-section input {
+    width: 100%;
+    margin-top: 5px;
+    border-radius: unset;
+    padding: 5px;
+    border: 1px solid #172153 !important;
+}
+.white-popup-block label, .white-popup-block p {
+    color: #172153;
+    font-size: 14px;
+    font-weight: 500;
+}
+.white-popup-block button {
+    padding: 5px 15px !important;
+    border: unset !important;
+    border-radius: 0px !important;
+    color: #fff !important;
+    margin-right: 5px !important;
+    background: #172153 !important;
+}
+.white-popup-block .button-primary {
+    background: #f56f46 !important;
+}
+
+table.complete-links-table tr {
+    background-color: transparent !important;
+    transition: background-color 1s ease;
+}
+table.complete-links-table tr.highlight-status-green {
+    background-color: rgba(0, 255, 0, 0.1) !important;
+}
+table.complete-links-table tr.highlight-status-blue {
+    background-color: rgba(0, 0, 255, 0.1) !important;
+}
+table.complete-links-table tr.highlight-status-red {
+    background-color: rgba(255, 0, 0, 0.1) !important;
+}
+table.complete-links-table tr.highlight-status-orange {
+    background-color: rgba(255, 165, 0, 0.1) !important;
+}

@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Complete Link Manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-30 08:55+0000\n"
+"PO-Revision-Date: 2024-12-30 09:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hindi\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.14; wp-6.7.1\n"
+"X-Domain: complete-link-manager"
+
+#. Name of the plugin
+msgid "Complete Link Manager"
+msgstr "पूर्ण लिंक प्रबंधक"
+
+#. Description of the plugin
+msgid ""
+"Easily manage all links in your WordPress posts and pages. Edit, delete, or "
+"update links directly from your dashboard."
+msgstr ""
+"मैं आसानी से अपने वर्डप्रेस पोस्ट और पेज पर सभी लिंक प्रबंधित करता हूं। सीधे "
+"अपने डैशबोर्ड से लिंक संपादित करें, कार्य करें या सबमिट करें।"
+
+#. Author of the plugin
+msgid "Harpalsinh Parmar"
+msgstr "Harpalsinh Parmar"
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/developer1998/"
+msgstr "https://profiles.wordpress.org/developer1998/"
+
+#: includes/class-complete-link-manager.php:16
+#: includes/class-complete-link-manager.php:17
+msgid "Link Manager"
+msgstr "लिंक प्रबंधक"
+
+#: complete-link-manager.php:67
+msgid "Settings"
+msgstr "सेटिंग्स"

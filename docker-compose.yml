@@ -20,7 +20,7 @@ services:
       - app-network
 
   wordpress:
-    image: wordpress:4.7.0
+    image: wordpress:4.7.1-php5.6-apache
     container_name: wordpress_app
     restart: unless-stopped
     ports:
