@@ -44,14 +44,15 @@ Per una corretta configurazione dell'ambiente e per abilitare alcune funzionalit
 2.  **Modificare la struttura**: Selezionare "Nome articolo" o qualsiasi altra opzione che non sia "Semplice".
 3.  **Salvare le modifiche**: Cliccare su "Salva le modifiche" per applicare la nuova configurazione.
 
-Questa configurazione abilita URL più leggibili e alcune funzionalità REST API che potrebbero essere necessarie per i test di vulnerabilità.
+Questa configurazione abilita URL più leggibili e alcune funzionalità REST API necessarie per i test di vulnerabilità.
 
 ## 4. Esecuzione degli Script di Vulnerabilità
 
-Questo ambiente è ora pronto per l'analisi. Gli script per riprodurre le vulnerabilità specifiche possono essere eseguiti contro il sito.
+Questo ambiente è ora pronto per l'analisi. Gli script per riprodurre le vulnerabilità specifiche si trovano nelle directory `content-injection` e `reflected-xss`.
 
--   Collocare gli script di exploit o i plugin/temi vulnerabili nelle rispettive cartelle (`./wp-content/plugins`, `./wp-content/themes`, o altre directory create appositamente).
--   Eseguire gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
+Eseguire gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
+
+## 5. Accesso e Credenziali
 
 ## Gestione dell'Ambiente
 
