@@ -34,15 +34,15 @@ Una volta avviato l'ambiente, segui questi passaggi per configurare il sito:
 
 Per replicare l'estetica desiderata, è necessario attivare il tema "NewsUp".
 
-1.  **Attiva il tema**: Accedi alla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Aspetto" -> "Temi", trova "NewsUp" e attivalo.
+1.  **Attivare il tema**: Accedere alla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Aspetto" -> "Temi", trova "NewsUp" e attivarlo.
 
 ## 3.1. Configurazione dei Permalink
 
 Per una corretta configurazione dell'ambiente e per abilitare alcune funzionalità avanzate, è necessario modificare la struttura dei permalink:
 
-1.  **Accedi alle impostazioni**: Dalla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Impostazioni" -> "Permalink".
-2.  **Modifica la struttura**: Seleziona "Nome articolo" o qualsiasi altra opzione che non sia "Semplice".
-3.  **Salva le modifiche**: Clicca su "Salva le modifiche" per applicare la nuova configurazione.
+1.  **Accedere alle impostazioni**: Dalla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Impostazioni" -> "Permalink".
+2.  **Modificare la struttura**: Selezionare "Nome articolo" o qualsiasi altra opzione che non sia "Semplice".
+3.  **Salvare le modifiche**: Cliccare su "Salva le modifiche" per applicare la nuova configurazione.
 
 Questa configurazione abilita URL più leggibili e alcune funzionalità REST API che potrebbero essere necessarie per i test di vulnerabilità.
 
@@ -50,8 +50,8 @@ Questa configurazione abilita URL più leggibili e alcune funzionalità REST API
 
 Questo ambiente è ora pronto per l'analisi. Gli script per riprodurre le vulnerabilità specifiche possono essere eseguiti contro il sito.
 
--   Colloca gli script di exploit o i plugin/temi vulnerabili nelle rispettive cartelle (`./wp-content/plugins`, `./wp-content/themes`, o altre directory create appositamente).
--   Esegui gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
+-   Collocare gli script di exploit o i plugin/temi vulnerabili nelle rispettive cartelle (`./wp-content/plugins`, `./wp-content/themes`, o altre directory create appositamente).
+-   Eseguire gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
 
 ## Gestione dell'Ambiente
 
