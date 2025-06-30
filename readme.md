@@ -1,84 +1,70 @@
-# Ambiente di Sviluppo WordPress con Docker
+# Ambiente di Test per Vulnerabilità WordPress
 
-Questa configurazione ti permette di avviare un ambiente di sviluppo WordPress completo utilizzando Docker e Docker Compose.
+Questa configurazione Docker permette di creare un ambiente di test isolato e controllato per analizzare e riprodurre vulnerabilità su una versione datata di WordPress, basata sulla configurazione del sito `zdnet.be` al momento di un incidente di sicurezza nel 2017.
+
+Lo stack software configurato è il seguente:
+-   **WordPress 4.7.1** con **PHP 5.6** e **Apache**
+-   **MariaDB 10.1.20** come database
+-   **phpMyAdmin 4.6.4** per la gestione del database
 
 ## Prerequisiti
 
 -   [Docker](https://docs.docker.com/get-docker/) installato sul tuo sistema.
 -   [Docker Compose](https://docs.docker.com/compose/install/) (solitamente incluso con Docker Desktop).
 
-## Come iniziare
+## 1. Avvio dell'Ambiente
 
-1.  **Modifica le password**: Apri il file `docker-compose.yml` e cambia le password di default (`your_strong_root_password` e `your_strong_password`) con delle password sicure.
+Per avviare tutti i servizi, esegui il seguente comando dalla cartella principale del progetto. Docker scaricherà le immagini necessarie (se non le hai già) e avvierà i container in background.
 
-2.  **Avvia i container**: Esegui questo comando dalla cartella principale del progetto. Docker scaricherà le immagini necessarie (se non le hai già) e avvierà i container in background.
+```bash
+docker-compose up -d
+```
 
-    ```bash
-    docker-compose up -d
-    ```
+WordPress sarà accessibile all'indirizzo:
+-   **WordPress**: `http://localhost:8081`
 
-3.  **Accedi a WordPress**: Una volta che i container sono attivi, puoi accedere al tuo sito WordPress aprendo il browser e visitando `http://localhost:8080`. Segui la procedura di installazione di WordPress.
+## 2. Configurazione di WordPress
 
-4.  **Arrestare l'ambiente**: Per fermare i container, esegui:
+Una volta avviato l'ambiente, segui questi passaggi per configurare il sito:
+
+1.  **Accedi a WordPress**: Apri il browser e vai su `http://localhost:8081`.
+2.  **Procedura di installazione**: Ti verrà presentata la schermata di installazione di WordPress. Inserisci le credenziali richieste.
+3.  **Completa l'installazione**: Segui i passaggi successivi per dare un titolo al sito e creare l'utente amministratore.
+
+## 3. Impostazioni di WordPress
+
+Per replicare l'estetica desiderata, è necessario attivare il tema "NewsUp".
+
+1.  **Attiva il tema**: Accedi alla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Aspetto" -> "Temi", trova "NewsUp" e attivalo.
+
+## 3.1. Configurazione dei Permalink
+
+Per una corretta configurazione dell'ambiente e per abilitare alcune funzionalità avanzate, è necessario modificare la struttura dei permalink:
+
+1.  **Accedi alle impostazioni**: Dalla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Impostazioni" -> "Permalink".
+2.  **Modifica la struttura**: Seleziona "Nome articolo" o qualsiasi altra opzione che non sia "Semplice".
+3.  **Salva le modifiche**: Clicca su "Salva le modifiche" per applicare la nuova configurazione.
+
+Questa configurazione abilita URL più leggibili e alcune funzionalità REST API che potrebbero essere necessarie per i test di vulnerabilità.
+
+## 4. Esecuzione degli Script di Vulnerabilità
+
+Questo ambiente è ora pronto per l'analisi. Gli script per riprodurre le vulnerabilità specifiche possono essere eseguiti contro il sito.
+
+-   Colloca gli script di exploit o i plugin/temi vulnerabili nelle rispettive cartelle (`./wp-content/plugins`, `./wp-content/themes`, o altre directory create appositamente).
+-   Esegui gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
+
+## Gestione dell'Ambiente
+
+-   **Fermare l'ambiente**: Per fermare i container senza cancellare i dati del database.
     ```bash
     docker-compose down
+    ```
+-   **Resettare l'ambiente**: Per fermare i container E CANCELLARE il database (utile per ricominciare da capo l'installazione).
+    ```bash
+    docker-compose down -v
     ```
 
 ## Come Replicare un Sito WordPress Esistente
 
-Per replicare un sito che hai già creato, segui questi passaggi:
-
-### 1. Copia i file del tuo sito
-
-Copia il contenuto delle seguenti cartelle dal tuo sito esistente a questo progetto:
-
--   **Temi**: Copia la cartella del tuo tema da `wp-content/themes` del sito originale alla cartella `./wp-content/themes` di questo progetto.
--   **Plugin**: Copia tutti i tuoi plugin da `wp-content/plugins` del sito originale alla cartella `./wp-content/plugins` di questo progetto.
--   **Uploads**: Copia tutti i file media da `wp-content/uploads` del sito originale alla cartella `./wp-content/uploads` di questo progetto.
-
-### 2. Esporta il Database del sito originale
-
-Dal tuo sito WordPress attuale, devi esportare il database. Puoi farlo in diversi modi:
-
--   **Tramite un plugin**: Utilizza un plugin come "All-in-One WP Migration" o "Duplicator" per creare un backup completo (file e database).
--   **Tramite phpMyAdmin**: Se il tuo hosting fornisce phpMyAdmin, puoi usarlo per esportare il database in formato `.sql`.
--   **Tramite WP-CLI**: Se hai accesso alla riga di comando, puoi usare il comando `wp db export`.
-
-Salva il file `.sql` del database in un posto sicuro.
-
-### 3. Importa il Database nel nuovo ambiente Docker
-
-Il modo più semplice per importare il database è sfruttare lo script di inizializzazione del container MariaDB.
-
-1.  **Ferma l'ambiente Docker (se attivo)**:
-    ```bash
-    docker-compose down -v
-    ```
-    **ATTENZIONE**: Il flag `-v` rimuove anche il volume del database (`db_data`), quindi qualsiasi dato presente nel database Docker verrà cancellato. Usalo solo per la prima importazione.
-
-2.  **Crea una cartella per lo script SQL**: Crea una nuova cartella chiamata `initdb` nella directory principale del progetto.
-
-3.  **Sposta il tuo file SQL**: Rinomina il file del database che hai esportato in `dump.sql` e spostalo dentro la cartella `initdb`.
-
-4.  **Modifica il `docker-compose.yml`**: Aggiungi un volume al servizio `db` per caricare il tuo file SQL all'avvio.
-
-    Modifica la sezione `services.db.volumes` nel `docker-compose.yml` in questo modo:
-
-    ```yaml
-    # ... (dentro la definizione del servizio db)
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./initdb:/docker-entrypoint-initdb.d
-    # ...
-    ```
-
-5.  **Avvia di nuovo l'ambiente**:
-    ```bash
-    docker-compose up -d
-    ```
-
-Al primo avvio, il container `db` eseguirà automaticamente il tuo file `dump.sql`, importando tutti i dati del tuo vecchio sito.
-
-Una volta completata l'importazione, il tuo sito dovrebbe essere un clone perfetto di quello originale, accessibile su `http://localhost:8080`.
-
-**IMPORTANTE**: Dopo la prima importazione, è consigliabile rimuovere il volume `./initdb:/docker-entrypoint-initdb.d` dal `docker-compose.yml` per evitare che lo script venga eseguito di nuovo inutilmente o causi problemi se ricrei i container. 
+</rewritten_file>
