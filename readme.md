@@ -5,7 +5,6 @@ Questa configurazione Docker permette di creare un ambiente di test isolato e co
 Lo stack software configurato è il seguente:
 -   **WordPress 4.7.1** con **PHP 5.6** e **Apache**
 -   **MariaDB 10.1.20** come database
--   **phpMyAdmin 4.6.4** per la gestione del database
 
 ## Prerequisiti
 
@@ -21,7 +20,7 @@ docker-compose up -d
 ```
 
 WordPress sarà accessibile all'indirizzo:
--   **WordPress**: `http://localhost:8081`
+`http://localhost:8081`
 
 ## 2. Configurazione di WordPress
 
