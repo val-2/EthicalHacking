@@ -64,7 +64,3 @@ Eseguire gli script seguendo le istruzioni fornite con essi, puntando all'indiri
     ```bash
     docker-compose down -v
     ```
-
-## Come Replicare un Sito WordPress Esistente
-
-</rewritten_file>
