@@ -1,66 +1,78 @@
-# Ambiente di Test per Vulnerabilità WordPress
+# WordPress Vulnerability Test Environment
 
-Questa configurazione Docker permette di creare un ambiente di test isolato e controllato per analizzare e riprodurre vulnerabilità su una versione datata di WordPress, basata sulla configurazione del sito `zdnet.be` al momento di un incidente di sicurezza nel 2017.
+This Docker setup creates an isolated and controlled test environment to analyze and reproduce vulnerabilities on an outdated version of WordPress, based on the configuration of the `zdnet.be` website at the time of the security incident in 2017.
 
-Lo stack software configurato è il seguente:
--   **WordPress 4.7.1** con **PHP 5.6** e **Apache**
--   **MariaDB 10.1.20** come database
+The configured software stack is as follows:
+-   **WordPress 4.7.1** with **PHP 5.6** and **Apache**
+-   **MariaDB 10.1.20** as the database
 
-## Prerequisiti
+## Prerequisites
 
--   [Docker](https://docs.docker.com/get-docker/) installato sul tuo sistema.
--   [Docker Compose](https://docs.docker.com/compose/install/) (solitamente incluso con Docker Desktop).
+-   [Docker](https://docs.docker.com/get-docker/) installed on your system.
+-   [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop).
 
-## 1. Avvio dell'Ambiente
+## 1. Starting the Environment
 
-Per avviare tutti i servizi, esegui il seguente comando dalla cartella principale del progetto. Docker scaricherà le immagini necessarie (se non le hai già) e avvierà i container in background.
+To start all services, run the following command from the project's root folder. Docker will download the necessary images (if you don't already have them) and start the containers in the background.
 
 ```bash
 docker-compose up -d
 ```
 
-WordPress sarà accessibile all'indirizzo:
+WordPress will be accessible at:
 `http://localhost:8081`
 
-## 2. Configurazione di WordPress
+## 2. WordPress Setup
 
-Una volta avviato l'ambiente, segui questi passaggi per configurare il sito:
+Once the environment is running, follow these steps to configure the site:
 
-1.  **Accedi a WordPress**: Apri il browser e vai su `http://localhost:8081`.
-2.  **Procedura di installazione**: Ti verrà presentata la schermata di installazione di WordPress. Inserisci le credenziali richieste.
-3.  **Completa l'installazione**: Segui i passaggi successivi per dare un titolo al sito e creare l'utente amministratore.
+1.  **Access WordPress**: Open your browser and go to `http://localhost:8081`.
+2.  **Installation Process**: You will be presented with the WordPress installation screen. Enter the required credentials.
+3.  **Complete Installation**: Follow the next steps to give the site a title and create the administrator user.
 
-## 3. Impostazioni di WordPress
+## 3. WordPress Settings
 
-Per replicare l'estetica desiderata, è necessario attivare il tema "NewsUp".
+To replicate the desired look, you need to activate the "NewsUp" theme.
 
-1.  **Attivare il tema**: Accedere alla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Aspetto" -> "Temi", trova "NewsUp" e attivarlo.
+1.  **Activate the theme**: Access the WordPress dashboard (`http://localhost:8081/wp-admin`), go to "Appearance" -> "Themes", find "NewsUp", and activate it.
 
-## 3.1. Configurazione dei Permalink
+## 3.1. Permalink Settings
 
-Per una corretta configurazione dell'ambiente e per abilitare alcune funzionalità avanzate, è necessario modificare la struttura dei permalink:
+For proper environment configuration and to make the content inkection vulnerability reproducible, you need to change the permalink structure:
 
-1.  **Accedere alle impostazioni**: Dalla bacheca di WordPress (`http://localhost:8081/wp-admin`), vai su "Impostazioni" -> "Permalink".
-2.  **Modificare la struttura**: Selezionare "Nome articolo" o qualsiasi altra opzione che non sia "Semplice".
-3.  **Salvare le modifiche**: Cliccare su "Salva le modifiche" per applicare la nuova configurazione.
+1.  **Access settings**: From the WordPress dashboard (`http://localhost:8081/wp-admin`), go to "Settings" -> "Permalinks".
+2.  **Change the structure**: Select "Post name" or any other option that is not "Plain".
+3.  **Save changes**: Click "Save Changes" to apply the new configuration.
 
-Questa configurazione abilita URL più leggibili e alcune funzionalità REST API necessarie per i test di vulnerabilità.
+This setup enables more readable URLs and some REST API features required for vulnerability testing.
 
-## 4. Esecuzione degli Script di Vulnerabilità
+## 4. Running the Scripts
 
-Questo ambiente è ora pronto per l'analisi. Gli script per riprodurre le vulnerabilità specifiche si trovano nelle directory `content-injection` e `reflected-xss`.
+This environment is now ready for analysis. The scripts to reproduce specific vulnerabilities are located in the project's directories.
 
-Eseguire gli script seguendo le istruzioni fornite con essi, puntando all'indirizzo `http://localhost:8081`.
+### Content Injection & RCE
 
-## 5. Accesso e Credenziali
+In the `content-injection` directory, there are three main scripts:
 
-## Gestione dell'Ambiente
+1.  **`script.py`**: Executes a Content Injection attack, modifying the title and content of the post with ID 1.
+2.  **`detect-vuln-exploitation.py`**: This script analyzes the `apache.log` file to detect exploitation attempts of the Content Injection vulnerability, looking for the specific request patterns left by a successful attack.
+3.  **`rce-script.py`**: This script executes the exploit chain described in the documentation to achieve Remote Code Execution. To run it correctly, follow these steps:
+    *   **Configure the attacker's IP**: Open the `content-injection/rce-script.py` file and change the `ip` variable to the IP address of your local machine (the one where you will run `netcat`).
+    *   **Start the listener**: Open a terminal and listen with `netcat` on the port specified in the script (e.g., `nc -lvnp 4444`).
+    *   **Run the script**: Launch the Python script (`python3 content-injection/rce-script.py`). This will inject the dormant payload into the post.
+    *   **Trigger the payload**: Visit the modified post's page (the script will provide the link) to trigger the reverse shell. Check your `netcat` terminal for the incoming connection.
 
--   **Fermare l'ambiente**: Per fermare i container senza cancellare i dati del database.
+### Reflected XSS
+
+The scripts related to this vulnerability are located in the `reflected-xss` directory. Run the scripts to reproduce CVE-2017-9061.
+
+## 5. Environment Management
+
+-   **Stop the environment**: To stop the containers without deleting the database data.
     ```bash
     docker-compose down
     ```
--   **Resettare l'ambiente**: Per fermare i container E CANCELLARE il database (utile per ricominciare da capo l'installazione).
+-   **Reset the environment**: To stop the containers AND DELETE the database (useful for starting the installation from scratch).
     ```bash
     docker-compose down -v
     ```

@@ -1,0 +1,33 @@
+172.18.0.1 - - [07/Jul/2025:15:21:17 +0000] "GET /wp-admin/load-scripts.php?c=0&load%5B%5D=jquery-core,jquery-migrate,utils,zxcvbn-async&ver=4.7.1 HTTP/1.1" 200 38292 "http://localhost:8081/wp-admin/profile.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:22 +0000] "GET /wp-admin/themes.php HTTP/1.1" 200 12970 "http://localhost:8081/wp-admin/profile.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:22 +0000] "GET /wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,thickbox,underscore,backbone,wp-util,wp-backbone,wp-a11y,theme,updates,customize-base,customize-loa&load%5B%5D=der,svg-painter,heartbeat,wp-auth-check&ver=4.7.1 HTTP/1.1" 200 45640 "http://localhost:8081/wp-admin/themes.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:24 +0000] "GET /wp-admin/edit-comments.php HTTP/1.1" 200 13068 "http://localhost:8081/wp-admin/themes.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:24 +0000] "GET /wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,wp-ajax-response,jquery-color,wp-lists,quicktags,jquery-query,admin-comments,svg-painter,heartbeat,&load%5B%5D=wp-auth-check,wp-a11y,wplink,jquery-ui-core,jquery-ui-widget,jquery-ui-position,jquery-ui-menu,jquery-ui-autocomplete&ver=4.7.1 HTTP/1.1" 200 41068 "http://localhost:8081/wp-admin/edit-comments.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:27 +0000] "GET /wp-admin/index.php HTTP/1.1" 200 14714 "http://localhost:8081/wp-admin/edit-comments.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:31 +0000] "GET /wp-admin/options-general.php HTTP/1.1" 200 16661 "http://localhost:8081/wp-admin/index.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:31 +0000] "GET /wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,svg-painter,heartbeat,wp-auth-check&ver=4.7.1 HTTP/1.1" 200 11334 "http://localhost:8081/wp-admin/options-general.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:34 +0000] "GET /wp-admin/options-permalink.php HTTP/1.1" 200 8293 "http://localhost:8081/wp-admin/options-general.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:37 +0000] "POST /wp-admin/options-permalink.php HTTP/1.1" 302 439 "http://localhost:8081/wp-admin/options-permalink.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:21:37 +0000] "GET /wp-admin/options-permalink.php?settings-updated=true HTTP/1.1" 200 8384 "http://localhost:8081/wp-admin/options-permalink.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+127.0.0.1 - - [07/Jul/2025:15:21:45 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.10 (Debian) PHP/5.6.30 (internal dummy connection)"
+
+172.18.0.1 - - [07/Jul/2025:15:22:24 +0000] "POST /wp-json/wp/v2/posts/12345?id=1pwn HTTP/1.1" 200 2108 "-" "python-requests/2.32.3"
+
+172.18.0.1 - - [07/Jul/2025:15:22:30 +0000] "GET / HTTP/1.1" 200 8107 "http://localhost:8081/wp-admin/options-permalink.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:22:32 +0000] "GET /ciao-mondo/ HTTP/1.1" 200 9192 "http://localhost:8081/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:22:33 +0000] "GET /wp-includes/js/comment-reply.min.js?ver=4.7.1 HTTP/1.1" 200 938 "http://localhost:8081/ciao-mondo/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+
+172.18.0.1 - - [07/Jul/2025:15:22:33 +0000] "GET /wp-content/themes/newsup/css/font-awesome/webfonts/fa-brands-400.woff2 HTTP/1.1" 200 117636 "http://localhost:8081/wp-content/themes/newsup/css/font-awesome/css/all.min.css?ver=4.7.1" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
