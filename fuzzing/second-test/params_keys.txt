@@ -1,0 +1,11 @@
+date
+guid
+id
+link
+slug
+password
+title
+content
+author
+excerpt
+meta

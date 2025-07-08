@@ -1,0 +1,136 @@
+{
+    "commandline": "ffuf -c -o results.json -u http://localhost:8081/wp-json/wp/v2/ENDPOINT?KEY=VALUE -X METHOD -w endpoints.txt:ENDPOINT -w methods.txt:METHOD -w params_keys.txt:KEY -w params_values.txt:VALUE -mode clusterbomb -t 100 -fc 401,403,404",
+    "time": "2025-07-08T11:38:04+02:00",
+    "results": [
+        {
+            "input": {
+                "ENDPOINT": "posts/1",
+                "KEY": "id",
+                "METHOD": "POST",
+                "VALUE": "1anything"
+            },
+            "position": 2,
+            "status": 200,
+            "length": 1580,
+            "words": 1,
+            "lines": 1,
+            "redirectlocation": "",
+            "resultfile": "",
+            "url": "http://localhost:8081/wp-json/wp/v2/posts/1?id=1anything"
+        },
+        {
+            "input": {
+                "ENDPOINT": "posts/1",
+                "KEY": "id",
+                "METHOD": "POST",
+                "VALUE": "1'"
+            },
+            "position": 322,
+            "status": 200,
+            "length": 1580,
+            "words": 1,
+            "lines": 1,
+            "redirectlocation": "",
+            "resultfile": "",
+            "url": "http://localhost:8081/wp-json/wp/v2/posts/1?id=1'"
+        },
+        {
+            "input": {
+                "ENDPOINT": "posts/1",
+                "KEY": "id",
+                "METHOD": "POST",
+                "VALUE": "1;"
+            },
+            "position": 642,
+            "status": 200,
+            "length": 1580,
+            "words": 1,
+            "lines": 1,
+            "redirectlocation": "",
+            "resultfile": "",
+            "url": "http://localhost:8081/wp-json/wp/v2/posts/1?id=1;"
+        },
+        {
+            "input": {
+                "ENDPOINT": "posts/1",
+                "KEY": "id",
+                "METHOD": "POST",
+                "VALUE": "1a"
+            },
+            "position": 4162,
+            "status": 200,
+            "length": 1580,
+            "words": 1,
+            "lines": 1,
+            "redirectlocation": "",
+            "resultfile": "",
+            "url": "http://localhost:8081/wp-json/wp/v2/posts/1?id=1a"
+        }
+    ],
+    "config": {
+        "headers": {},
+        "extensions": [],
+        "dirsearch_compatibility": false,
+        "method": "METHOD",
+        "url": "http://localhost:8081/wp-json/wp/v2/ENDPOINT?KEY=VALUE",
+        "postdata": "",
+        "quiet": false,
+        "colors": true,
+        "inputproviders": [
+            {
+                "name": "wordlist",
+                "keyword": "ENDPOINT",
+                "value": "endpoints.txt"
+            },
+            {
+                "name": "wordlist",
+                "keyword": "METHOD",
+                "value": "methods.txt"
+            },
+            {
+                "name": "wordlist",
+                "keyword": "KEY",
+                "value": "params_keys.txt"
+            },
+            {
+                "name": "wordlist",
+                "keyword": "VALUE",
+                "value": "params_values.txt"
+            }
+        ],
+        "cmd_inputnum": 100,
+        "inputmode": "clusterbomb",
+        "outputdirectory": "",
+        "outputfile": "results.json",
+        "outputformat": "json",
+        "ignore_wordlist_comments": false,
+        "stop_403": false,
+        "stop_errors": false,
+        "stop_all": false,
+        "follow_redirects": false,
+        "autocalibration": false,
+        "autocalibration_strings": [],
+        "timeout": 10,
+        "delay": {
+            "value": "0.00"
+        },
+        "filters": {
+            "status": {
+                "value": "401,403,404"
+            }
+        },
+        "matchers": {
+            "status": {
+                "value": "200,204,301,302,307,401,403"
+            }
+        },
+        "threads": 100,
+        "proxyurl": "",
+        "replayproxyurl": "",
+        "cmdline": "ffuf -c -o results.json -u http://localhost:8081/wp-json/wp/v2/ENDPOINT?KEY=VALUE -X METHOD -w endpoints.txt:ENDPOINT -w methods.txt:METHOD -w params_keys.txt:KEY -w params_values.txt:VALUE -mode clusterbomb -t 100 -fc 401,403,404",
+        "verbose": false,
+        "maxtime": 0,
+        "recursion": false,
+        "recursion_depth": 0
+    }
+}

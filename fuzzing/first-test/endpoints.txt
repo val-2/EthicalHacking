@@ -1,0 +1,8 @@
+posts
+posts/1
+pages
+pages/2
+users
+users/1
+media
+media/4
